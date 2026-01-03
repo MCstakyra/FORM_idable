@@ -1,0 +1,239 @@
+/* Palette de couleurs */
+:root {
+    --color-bg-main: #121212; /* Noir profond */
+    --color-bg-secondary: #1E1E1E; /* Gris très foncé pour les cartes */
+    --color-text-primary: #FFFFFF; /* Blanc */
+    --color-text-secondary: #B0B0B0; /* Gris clair */
+    --color-accent-red: #E50914; /* Rouge vif, style Netflix/Sport */
+    --color-alert-bg: rgba(229, 9, 20, 0.8); /* Fond rouge transparent pour les alertes */
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne standard */
+}
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- LE FOND ANIMÉ FLUIDE --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* Juste l'haltère, dessinée proprement en SVG blanc */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Barre --%3E%3Cpath d='M20 50 L80 50' /%3E%3C!-- Poids Gauche --%3E%3Crect x='10' y='30' width='10' height='40' rx='2' /%3E%3Crect x='2' y='35' width='6' height='30' rx='1' /%3E%3C!-- Poids Droit --%3E%3Crect x='80' y='30' width='10' height='40' rx='2' /%3E%3Crect x='92' y='35' width='6' height='30' rx='1' /%3E%3C/svg%3E");
+    
+    /* Espacement large : 200px entre chaque haltère */
+    background-size: 200px 150px;
+    background-repeat: repeat;
+    
+    /* Opacité très faible pour que ça reste discret */
+    opacity: 0.04;
+    
+    /* Animation lente et continue */
+    animation: fluidGlide 5s linear infinite;
+}
+
+/* Mouvement diagonal très lent et fluide */
+@keyframes fluidGlide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        /* On déplace de la taille exacte du motif (200px) pour une boucle parfaite sans coupure */
+        background-position: 200px 200px;
+    }
+}
+
+/* Header simple */
+header {
+    padding: 1rem 2rem;
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-accent-red);
+    letter-spacing: 2px;
+}
+
+/* Conteneur principal centré */
+main.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Titres */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+p.subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-accent-red);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #ff1f2a;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-text-primary);
+    margin-top: 1rem;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-main);
+}
+
+/* --- Styles spécifiques à la page de Sélection --- */
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.exercise-card {
+    background-color: var(--color-bg-secondary);
+    padding: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    border: 2px solid transparent;
+    text-decoration: none; /* Pour le lien */
+    color: var(--color-text-primary);
+}
+
+.exercise-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent-red);
+}
+
+.exercise-icon {
+    font-size: 3rem;
+    color: var(--color-accent-red);
+    margin-bottom: 1rem;
+}
+
+/* --- Styles spécifiques à la page de SCAN (Le plus important) --- */
+.scan-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16/9; /* Format vidéo standard */
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid var(--color-bg-secondary);
+}
+
+/* L'élément vidéo qui affiche la webcam */
+#webcamVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Effet miroir pour que ce soit naturel */
+}
+
+/* L'interface superposée sur la vidéo */
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    pointer-events: none; /* Permet de cliquer "à travers" l'overlay si besoin */
+}
+
+.scan-status {
+    color: var(--color-text-secondary);
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* La boîte d'alerte ROUGE pour les corrections */
+#correctionAlertBox {
+    /* Caché par défaut, JS va le montrer */
+    display: none; 
+    background-color: var(--color-alert-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    animation: pulseAlert 1s infinite alternate;
+}
+
+#correctionText {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Petite animation pour attirer l'attention */
+@keyframes pulseAlert {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.scan-controls {
+    pointer-events: auto; /* Réactive les clics pour le bouton */
+    display: flex;
+    justify-content: center;
+}

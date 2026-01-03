@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM_idable - Analyse en cours</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">FORM_idable</div>
+    </header>
+
+    <main class="container">
+        <h2 id="exerciseTitle">Analyse en cours...</h2>
+
+        <div class="scan-container">
+             <video id="webcamVideo" autoplay playsinline></video>
+            
+            <div class="scan-overlay">
+                <div class="scan-status">
+                    <span id="statusText">🟢 Système prêt. Commencez l'exercice.</span>
+                </div>
+
+                <div id="correctionAlertBox">
+                    <div id="correctionText">⚠️ CORRECTION NÉCESSAIRE</div>
+                </div>
+
+                <div class="scan-controls">
+                    <a href="selection.html" class="btn btn-secondary">Terminer la session</a>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; color: var(--color-text-secondary); font-size: 0.9rem;">
+            Assurez-vous que tout votre corps est visible dans le cadre.
+        </p>
+    </main>
+
+    <script src="scan.js"></script>
+</body>
+</html>
