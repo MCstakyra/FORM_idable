@@ -70,6 +70,23 @@ header {
     align-items: center;
 }
 
+/* --- Style spécifique pour le lien Retour --- */
+.back-link {
+    color: var(--color-text-primary);
+    text-decoration: none; /* Pas souligné par défaut */
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease; /* Transition fluide pour l'animation */
+    display: inline-block; /* Nécessaire pour que 'transform' fonctionne bien sur un lien */
+}
+
+/* Au survol : agrandissement et soulignement */
+.back-link:hover {
+    transform: scale(1.2); /* Agrandit de 20% */
+    text-decoration: underline;
+    color: var(--color-accent-red); /* Petit bonus : on le passe en rouge au survol */
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -162,10 +179,29 @@ p.subtitle {
     border-color: var(--color-accent-red);
 }
 
-.exercise-icon {
-    font-size: 3rem;
-    color: var(--color-accent-red);
+/* --- REMPLACER L'ANCIEN BLOC .exercise-icon PAR CECI --- */
+
+/* Conteneur pour l'image dans la carte */
+.exercise-img-container {
+    width: 100%;
+    height: 180px; /* Hauteur fixe pour que toutes les cartes soient alignées */
     margin-bottom: 1rem;
+    overflow: hidden; /* Important pour l'effet de zoom */
+    border-radius: 6px;
+    background-color: #000; /* Fond noir pendant le chargement */
+}
+
+/* Style de l'image elle-même */
+.exercise-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit tout le cadre sans être déformée */
+    transition: transform 0.5s ease; /* Animation lente pour le zoom */
+}
+
+/* Effet : Quand on survole la carte complète, l'image zoome légèrement */
+.exercise-card:hover .exercise-img-container img {
+    transform: scale(1.1);
 }
 
 /* --- Styles spécifiques à la page de SCAN (Le plus important) --- */
@@ -236,4 +272,63 @@ p.subtitle {
     pointer-events: auto; /* Réactive les clics pour le bouton */
     display: flex;
     justify-content: center;
+}
+
+/* --- STYLE DU MENU DÉROULANT --- */
+
+/* La barre cliquable (Le déclencheur) */
+.dropdown-trigger {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* Texte à gauche, flèche à droite */
+    align-items: center;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 1000px; /* Même largeur que la grille */
+}
+
+.dropdown-trigger:hover {
+    border-color: var(--color-accent-red);
+    background-color: #252525;
+}
+
+.dropdown-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* La flèche */
+.arrow-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent-red);
+    transition: transform 0.4s ease; /* Animation de rotation */
+}
+
+/* Classe ajoutée par JS pour tourner la flèche */
+.dropdown-trigger.active .arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* --- LE CONTENEUR QUI SE DÉROULE --- */
+.collapsible-content {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 0; /* Caché par défaut (hauteur 0) */
+    overflow: hidden; /* Cache ce qui dépasse */
+    transition: max-height 0.6s ease-out, opacity 0.5s ease; /* Animation fluide */
+    opacity: 0;
+}
+
+/* Classe ajoutée par JS pour ouvrir */
+.collapsible-content.open {
+    max-height: 3000px; /* Une hauteur suffisante pour tout afficher */
+    opacity: 1;
+    margin-bottom: 2rem;
 }
