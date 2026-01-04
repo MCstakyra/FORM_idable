@@ -9,31 +9,126 @@
 <body>
     <header>
         <div class="logo">FORM_idable</div>
-        <a href="index.html" style="color:white; text-decoration: none;">Retour</a>
+        <a href="index.html" class="back-link">Retour</a>
     </header>
 
     <main class="container">
         <h2>Choisissez votre exercice</h2>
+        <p class="subtitle">Cliquez sur la barre ci-dessous pour afficher la liste.</p>
         
-        <div class="exercise-grid">
-            <a href="scan.html?exo=squat" class="exercise-card">
-                <div class="exercise-icon">🏋️</div>
-                <h3>Squats</h3>
-                <p>Focus: Jambes, fessiers, dos.</p>
-            </a>
-
-            <a href="scan.html?exo=pushup" class="exercise-card">
-                <div class="exercise-icon">💪</div>
-                <h3>Pompes</h3>
-                <p>Focus: Pectoraux, triceps, gainage.</p>
-            </a>
-
-             <a href="scan.html?exo=plank" class="exercise-card">
-                <div class="exercise-icon">⏱️</div>
-                <h3>Planche</h3>
-                <p>Focus: Abdominaux, stabilité.</p>
-            </a>
+        <div class="dropdown-trigger" id="dropdownBtn">
+            <span class="dropdown-title">Bibliothèque d'exercices</span>
+            <span class="arrow-icon">▼</span>
         </div>
-    </main>
+
+        <div class="collapsible-content" id="dropdownContent">
+            
+            <div class="exercise-grid">
+                <a href="scan.html?exo=squat" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/squat.jpg" alt="Squats">
+                    </div>
+                    <h3>Squats</h3>
+                    <p>Focus: Cuisses, fessiers.</p>
+                </a>
+
+                <a href="scan.html?exo=pushup" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/pompe.jpg" alt="Pompes">
+                    </div>
+                    <h3>Pompes</h3>
+                    <p>Focus: Pectoraux, bras.</p>
+                </a>
+
+                <a href="scan.html?exo=plank" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/planche.jpg" alt="Planche">
+                    </div>
+                    <h3>Planche</h3>
+                    <p>Focus: Gainage complet.</p>
+                </a>
+
+                <a href="scan.html?exo=lunges" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/fentes.jpg" alt="Fentes">
+                    </div>
+                    <h3>Fentes</h3>
+                    <p>Focus: Équilibre, jambes.</p>
+                </a>
+
+                <a href="scan.html?exo=jumpingjacks" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/jumping_jack.jpg" alt="Jumping Jacks">
+                    </div>
+                    <h3>Jumping Jacks</h3>
+                    <p>Focus: Cardio, coordination.</p>
+                </a>
+
+                <a href="scan.html?exo=burpees" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/burpees.jpg" alt="Burpees">
+                    </div>
+                    <h3>Burpees</h3>
+                    <p>Focus: Explosivité, complet.</p>
+                </a>
+
+                <a href="scan.html?exo=crunches" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/crunchs.jpg" alt="Crunchs">
+                    </div>
+                    <h3>Crunchs</h3>
+                    <p>Focus: Abdominaux.</p>
+                </a>
+
+                <a href="scan.html?exo=mountain" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/mountain-climbers.jpg" alt="Mountain Climbers">
+                    </div>
+                    <h3>Mountain Climbers</h3>
+                    <p>Focus: Cardio, abdos bas.</p>
+                </a>
+
+                <a href="scan.html?exo=bridge" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/pont_fessiers.jpg" alt="Pont Fessier">
+                    </div>
+                    <h3>Pont Fessier</h3>
+                    <p>Focus: Chaîne postérieure.</p>
+                </a>
+
+                <a href="scan.html?exo=dips" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/dips-bench.jpg" alt="Dips">
+                    </div>
+                    <h3>Dips</h3>
+                    <p>Focus: Triceps, épaules.</p>
+                </a>
+
+                <a href="scan.html?exo=highknees" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/high-knee-run.jpg" alt="Montées de genoux">
+                    </div>
+                    <h3>Montées de genoux</h3>
+                    <p>Focus: Cardio intense.</p>
+                </a>
+
+                <a href="scan.html?exo=superman" class="exercise-card">
+                    <div class="exercise-img-container">
+                        <img src="images/dynamic-superman.jpg" alt="Superman">
+                    </div>
+                    <h3>Superman</h3>
+                    <p>Focus: Lombaires, dos.</p>
+                </a>
+            </div> </div> </main>
+
+    <script>
+        const btn = document.getElementById('dropdownBtn');
+        const content = document.getElementById('dropdownContent');
+
+        btn.addEventListener('click', function() {
+            content.classList.toggle('open');
+            btn.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
