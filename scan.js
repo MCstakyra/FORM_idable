@@ -20,7 +20,7 @@ async function startWebcam() {
     } catch (err) {
         console.error("Erreur d'accès à la webcam:", err);
         alert("Impossible d'accéder à la caméra. Vérifiez vos permissions.");
-        statusText.textContent = "🔴 Erreur caméra";
+        statusText.textContent = " Erreur caméra";
     }
 }
 
@@ -30,14 +30,14 @@ async function startWebcam() {
 function showCorrection(message) {
     correctionText.textContent = "⚠️ " + message.toUpperCase();
     alertBox.style.display = 'block'; // Rendre visible
-    statusText.textContent = "🟠 Correction en cours...";
+    statusText.textContent = " Correction en cours...";
     // Optionnel : ajouter un son ici
 }
 
 // Fonction pour CACHER l'alerte quand la posture est bonne
 function clearCorrection() {
     alertBox.style.display = 'none'; // Cacher
-    statusText.textContent = "🟢 Posture correcte. Continuez !";
+    statusText.textContent = " Posture correcte. Continuez !";
 }
 
 
